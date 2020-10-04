@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -47,20 +48,17 @@ public class PlayerController : MonoBehaviour
 
     void WalkHandler()
     {
-        //input on x (horiz)
         float hAxis = Input.GetAxis("Horizontal");
-
-        //input on y (vert)
         float vAxis = Input.GetAxis("Vertical");
 
-        //Movement vector
-        Vector3 movement = new Vector3(hAxis * walkingSpeed * Time.deltaTime, 0, vAxis * walkingSpeed * Time.deltaTime);
+        float rotationSpeed = 100;
+        transform.Rotate(0f, hAxis * rotationSpeed * Time.deltaTime, 0f);
 
-        //Calculate new position
-        Vector3 newPos = transform.position + movement;
+        // Correct for weird default duck rotation
+        Vector3 forwardDirection = Vector3.right;
+        float speedAmplifier = 1000;
 
-        //Move
-        rb.MovePosition(newPos);
+        rb.AddRelativeForce(forwardDirection * vAxis * walkingSpeed * speedAmplifier * Time.deltaTime);
     }
 
     void HookedHandler()
