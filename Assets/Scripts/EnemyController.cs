@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float speed = 3;
+    public float speed;
 
-    public float rangeY = 3;
+    public float rangeY;
 
     Vector3 initialPos;
 
@@ -15,7 +15,9 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    	var rand = new System.Random((int)transform.position.x);
         initialPos = transform.position;
+    	transform.position += new Vector3(0, rand.Next(0, 50), 0);
     }
 
     // Update is called once per frame

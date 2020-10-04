@@ -58,9 +58,9 @@ public class PlayerController : MonoBehaviour
 
     void HookedHandler()
     {
-        transform.position += new Vector3(0, 0.3f, 0);
+        transform.position += new Vector3(0, 0.8f, 0);
 
-        if (transform.position.y > 20) {
+        if (transform.position.y > 400) {
             Destroy(gameObject);
 
             // @TODO: Player is dead, end game sequence?
@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         switch(other.tag) {
-            case "Enemy":
+            case "Hook":
                 HandleHookCollision();
                 break;
             default:
