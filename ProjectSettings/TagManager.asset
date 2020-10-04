@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Hook
+  - ColouredPart
   layers:
   - Default
   - TransparentFX
