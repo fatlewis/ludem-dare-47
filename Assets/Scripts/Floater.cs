@@ -13,10 +13,15 @@ public class Floater : MonoBehaviour
     public float waterDrag = 0.99f;
     public float waterAngularDrag = 0.5f;
 
+    public Transform surface;
+
     private void FixedUpdate()
     {
+        WaveManager waveManager = surface.GetComponentInParent<WaveManager>();
+
         rigidBody.AddForceAtPosition(Physics.gravity / floaterCount, transform.position, ForceMode.Acceleration);
-        float waveHeight = WaveManager.instance.GetWaveHeight(transform.position.x);
+
+        float waveHeight = waveManager.GetWaveHeight(transform.position.x) + surface.position.y;
         if (transform.position.y < waveHeight)
         {
             float displacementMultiplier = Mathf.Clamp01((waveHeight - transform.position.y) / depthBeforeSubmerged) * displacementAmount;

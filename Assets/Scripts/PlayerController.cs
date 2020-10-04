@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -51,7 +52,10 @@ public class PlayerController : MonoBehaviour
         Vector3 newPos = transform.position + movement;
 
         //Move
-        rb.MovePosition(newPos);
+        //rb.MovePosition(newPos);
+        Vector3 direction = new Vector3(vAxis, 0, hAxis);
+        float speed = walkingSpeed * Time.deltaTime;
+        rb.AddRelativeForce(direction * speed);
     }
 
     void OnTriggerEnter(Collider other)
