@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float walkingSpeed;
-    public float jumpSpeed;
 
     //Rigidbody component
     Rigidbody rb;
@@ -21,6 +20,14 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Material playerMaterial = GameManager.gameManager.GetMaterial();
+        Renderer[] childRenderers = GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in childRenderers) {
+            if (r.gameObject.tag == "ColouredPart") {
+                r.material = playerMaterial;
+            }
+        }
+
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
 

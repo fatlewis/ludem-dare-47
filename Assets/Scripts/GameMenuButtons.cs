@@ -22,7 +22,7 @@ public class GameMenuButtons : MonoBehaviour
 
     public void PlayButton()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("DuckSelectScene");
     }
 
     public void SettingsButton()

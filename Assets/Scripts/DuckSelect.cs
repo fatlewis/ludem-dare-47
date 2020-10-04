@@ -8,11 +8,13 @@ public class DuckSelect : MonoBehaviour
 	Renderer[] childRenderers;
 	public Material[] availableMaterials;
 	int currentMaterial = 0;
+	public Material currentChosenMaterial;
     // Start is called before the first frame update
 	void Start()
 	{
 		duck = GameObject.FindGameObjectWithTag("Player");
 		childRenderers = duck.GetComponentsInChildren<Renderer>();
+		currentChosenMaterial = availableMaterials[currentMaterial];
 	}
 
 	void Update()
@@ -23,6 +25,7 @@ public class DuckSelect : MonoBehaviour
 	public void PlayButton()
 	{
         Debug.Log("Play button pressed");
+        GameManager.gameManager.SetMaterial(currentChosenMaterial);
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
 	}
 
@@ -31,10 +34,12 @@ public class DuckSelect : MonoBehaviour
 		//Modulo in C# is actually a remainder, doesn't work for negative numbers. This is a hacky fix.
 		int choiceCount = availableMaterials.Length;
 		currentMaterial = (((currentMaterial - 1) % choiceCount) + choiceCount) % choiceCount;
+		currentChosenMaterial = availableMaterials[currentMaterial];
+
 
 		foreach (Renderer r in childRenderers) {
 			if (r.gameObject.tag == "ColouredPart") {
-				r.material = availableMaterials[currentMaterial];
+				r.material = currentChosenMaterial;
 			}
 		}
 	}
@@ -42,9 +47,11 @@ public class DuckSelect : MonoBehaviour
 	public void RightButton()
 	{
 		currentMaterial = (currentMaterial + 1) % availableMaterials.Length;
+		currentChosenMaterial = availableMaterials[currentMaterial];
+
 		foreach (Renderer r in childRenderers) {
 			if (r.gameObject.tag == "ColouredPart") {
-				r.material = availableMaterials[currentMaterial];
+				r.material = currentChosenMaterial;
 			}
 		}
 	}

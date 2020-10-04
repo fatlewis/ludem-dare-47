@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Hook
   - ColouredPart
+  - MaterialScript
   layers:
   - Default
   - TransparentFX
