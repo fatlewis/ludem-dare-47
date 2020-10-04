@@ -6,7 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     public float speed = 3;
 
-    public float rangeY = 2;
+    public float rangeY = 3;
 
     Vector3 initialPos;
 
