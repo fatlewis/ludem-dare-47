@@ -6,7 +6,6 @@ using UnityEngine;
 public class OtherDucks : MonoBehaviour
 {
     float speed;
-    float angleRot = -0.32f;
     float angle;
     float radius;
     bool hooked = false;
@@ -17,8 +16,6 @@ public class OtherDucks : MonoBehaviour
         angle = (float)Math.Atan2(transform.position.z, transform.position.x);
         var rand = new System.Random((int)(angle + DateTime.Now.Millisecond));
         speed = (float)(0.5f*rand.NextDouble()) + 0.2f;
-        Debug.Log($"speed = {speed}");
-        //Debug.Log($"angle = {angle}, x = {transform.position.x}, z = {transform.position.z}");
     }
 
     void Update()
