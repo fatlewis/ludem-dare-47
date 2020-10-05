@@ -29,7 +29,10 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
 
-        GameManager.gameManager.PlayGameMusic();
+        if (GameManager.gameManager.IsMusicEnabled())
+        {
+            GameManager.gameManager.PlayGameMusic();
+        }
     }
 
     // Update is called once per frame

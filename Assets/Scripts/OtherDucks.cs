@@ -70,8 +70,11 @@ public class OtherDucks : MonoBehaviour
 
     void Quack()
     {
-        System.Random rand = new System.Random();
-        quacks[rand.Next(quacks.Length)].Play();
+        if (GameManager.gameManager.IsSoundEnabled())
+        {
+            System.Random rand = new System.Random();
+            quacks[rand.Next(quacks.Length)].Play();
+        }     
     }
 
     void OnCollisionEnter(Collision collision)

@@ -8,6 +8,9 @@ TagManager:
   - Hook
   - ColouredPart
   - MaterialScript
+  - MusicToggle
+  - SoundToggle
+  - SettingsMenu
   layers:
   - Default
   - TransparentFX

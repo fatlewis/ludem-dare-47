@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMenuButtons : MonoBehaviour
 {
@@ -11,7 +12,10 @@ public class GameMenuButtons : MonoBehaviour
     void Start()
     {
         MainMenuButton();
-        GameManager.gameManager.PlayMenuMusic();
+        if (GameManager.gameManager.IsMusicEnabled())
+        {
+            GameManager.gameManager.PlayMenuMusic();
+        }
     }
 
     public void MainMenuButton()
@@ -31,6 +35,7 @@ public class GameMenuButtons : MonoBehaviour
         MainMenu.SetActive(false);
         SettingsMenu.SetActive(true);
         AboutMenu.SetActive(false);
+        GameManager.gameManager.RefreshToggles();
     }
 
     public void QuitButton()
