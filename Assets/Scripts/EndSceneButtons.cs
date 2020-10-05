@@ -13,6 +13,7 @@ public class EndSceneButtons : MonoBehaviour
     public void PlayButton()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("DuckSelectScene");
+        GameManager.gameManager.PlayMenuMusic();
         GameManager.gameManager.ResetScore();
     }
 
