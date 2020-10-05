@@ -5,7 +5,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 	//static instance of the GM can be accessed from anywhere
-	public static GameManager gameManager;   
+	public static GameManager gameManager;  
+
+	public float score = 0;
+	public int scoreInt = 0;
 
     public AudioClip menuMusic;
     public AudioClip gameMusic;
@@ -32,9 +35,6 @@ public class GameManager : MonoBehaviour
 
         //don't destroy this object when changing scenes
         DontDestroyOnLoad(gameObject);
-
-        //find an object of type HudManager
-        //hudManager = FindObjectOfType<HUDManager>();
     }
     
     // Start is called before the first frame update
@@ -47,6 +47,20 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void IncreaseScore(float amount)
+    {
+    	//increase score by the amount
+    	score += amount;
+
+    	scoreInt = (int)score;
+    }
+
+    public void ResetScore()
+    {
+    	score = 0;
+    	scoreInt = 0;
     }
 
     public void SetMaterial(Material chosenMaterial)
