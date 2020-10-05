@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
         } else {
             HookedHandler();
         }
+        GameManager.gameManager.IncreaseScore(Time.deltaTime);
     }
 
     void WalkHandler()
@@ -65,10 +66,9 @@ public class PlayerController : MonoBehaviour
     {
         transform.position += new Vector3(0, 0.8f, 0);
 
-        if (transform.position.y > 400) {
+        if (transform.position.y > 100) {
             Destroy(gameObject);
-
-            // @TODO: Player is dead, end game sequence?
+            UnityEngine.SceneManagement.SceneManager.LoadScene("EndScene");
         }
     }
 
