@@ -24,7 +24,6 @@ public class DuckSelect : MonoBehaviour
 
 	public void PlayButton()
 	{
-        Debug.Log("Play button pressed");
         GameManager.gameManager.SetMaterial(currentChosenMaterial);
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
 	}
@@ -35,7 +34,6 @@ public class DuckSelect : MonoBehaviour
 		int choiceCount = availableMaterials.Length;
 		currentMaterial = (((currentMaterial - 1) % choiceCount) + choiceCount) % choiceCount;
 		currentChosenMaterial = availableMaterials[currentMaterial];
-
 
 		foreach (Renderer r in childRenderers) {
 			if (r.gameObject.tag == "ColouredPart") {

@@ -10,12 +10,6 @@ public class PlayerController : MonoBehaviour
     //Rigidbody component
     Rigidbody rb;
 
-    //Colider component
-    Collider col;
-
-    //size of the player
-    Vector3 size;
-
     bool hooked = false;
     Transform hookLocation;
 
@@ -34,10 +28,6 @@ public class PlayerController : MonoBehaviour
         }
 
         rb = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
-
-        //get player size
-        size = col.bounds.size;
 
         GameManager.gameManager.PlayGameMusic();
     }
@@ -90,19 +80,11 @@ public class PlayerController : MonoBehaviour
         transform.rotation = new Quaternion(0, 180, 0, 0);
     }
 
-    void Quack()
+    void OnCollisionEnter(Collision other)
     {
-        print("Quack");
-    }
-
-    void OnTriggerEnter(Collider collider)
-    {
-        switch(collider.tag) {
+        switch(other.gameObject.tag) {
             case "Hook":
-                HandleHookCollision(collider.gameObject);
-                break;
-            default:
-                Quack();
+                HandleHookCollision(other.gameObject);
                 break;
         }
     }

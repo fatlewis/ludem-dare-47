@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 	//static instance of the GM can be accessed from anywhere
 	public static GameManager gameManager;  
 
-	public float score = 0;
-	public int scoreInt = 0;
+	float score = 0;
+	int scoreInt = 0;
 
     public AudioClip menuMusic;
     public AudioClip gameMusic;
@@ -35,26 +35,19 @@ public class GameManager : MonoBehaviour
 
         //don't destroy this object when changing scenes
         DontDestroyOnLoad(gameObject);
-    }
-    
-    // Start is called before the first frame update
-    void Start()
-    {
         music = GetComponent<AudioSource>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void IncreaseScore(float amount)
     {
     	//increase score by the amount
     	score += amount;
-
     	scoreInt = (int)score;
+    }
+
+    public int GetScoreInt()
+    {
+    	return scoreInt;
     }
 
     public void ResetScore()
