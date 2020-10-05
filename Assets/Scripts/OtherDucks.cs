@@ -9,6 +9,10 @@ public class OtherDucks : MonoBehaviour
     float angle;
     float radius;
     bool hooked = false;
+    Transform hookLocation;
+
+    // This is the required offset from the hook's transform to the duck's transform to make the hook line up with the loop
+    Vector3 hookOffset = new Vector3(11, 13, 0);
 
     private AudioSource[] quacks;
 
@@ -46,17 +50,22 @@ public class OtherDucks : MonoBehaviour
 
     void HookedHandler()
     {
-        transform.position += new Vector3(0, 0.8f, 0);
+        transform.position = hookLocation.position + hookOffset;
 
         // When they get high enough, just kill them.
-        if (transform.position.y > 400) {
+        if (transform.position.y > 140) {
             Destroy(gameObject);
         }
     }
 
-    void HandleHookCollision()
+    void HandleHookCollision(GameObject hook)
     {
         hooked = true;
+        hookLocation = hook.transform;
+
+        // Rotate the ducks so the hook is on the right place
+        // TODO: Make it look nice whatever their rotation
+        transform.rotation = new Quaternion(0, 180, 0, 0);
     }
 
     void Quack()
@@ -69,7 +78,20 @@ public class OtherDucks : MonoBehaviour
     {
         switch(collision.gameObject.tag) {
             case "Hook":
-                HandleHookCollision();
+                HandleHookCollision(collision.gameObject);
+                break;
+            default:
+                Quack();
+                break;
+        }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        switch (collider.gameObject.tag)
+        {
+            case "Hook":
+                HandleHookCollision(collider.gameObject);
                 break;
             default:
                 Quack();
