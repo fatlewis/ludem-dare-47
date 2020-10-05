@@ -10,12 +10,6 @@ public class PlayerController : MonoBehaviour
     //Rigidbody component
     Rigidbody rb;
 
-    //Colider component
-    Collider col;
-
-    //size of the player
-    Vector3 size;
-
     bool hooked = false;
 
     // Start is called before the first frame update
@@ -30,10 +24,6 @@ public class PlayerController : MonoBehaviour
         }
 
         rb = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
-
-        //get player size
-        size = col.bounds.size;
 
         GameManager.gameManager.PlayGameMusic();
     }
@@ -80,19 +70,11 @@ public class PlayerController : MonoBehaviour
         rb.useGravity = false;
     }
 
-    void Quack()
+    void OnCollisionEnter(Collision other)
     {
-        print("Quack");
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        switch(other.tag) {
+        switch(other.gameObject.tag) {
             case "Hook":
                 HandleHookCollision();
-                break;
-            default:
-                Quack();
                 break;
         }
     }

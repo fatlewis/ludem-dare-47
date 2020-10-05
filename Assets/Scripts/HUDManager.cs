@@ -5,28 +5,11 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
-
 	// score label text
 	public Text scoreLabel;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //start with fresh score
-        //ResetHud();
-        //scoreLabel.text = "Score: " + GameManager.gameManager.scoreInt;
-    }
-
     void Update()
     {
-    	scoreLabel.text = "Score: " + GameManager.gameManager.scoreInt;
+    	scoreLabel.text = "Score: " + GameManager.gameManager.GetScoreInt();
     }
-
-    // show up to date stats of the player
-    public void ResetHud()
-    {
-    	//set score to 0?
-    }
-
-   
 }

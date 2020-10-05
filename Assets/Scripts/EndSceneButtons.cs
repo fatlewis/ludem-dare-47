@@ -6,9 +6,18 @@ using UnityEngine.UI;
 public class EndSceneButtons : MonoBehaviour
 {
 	public Text scoreLabel;
+	public GameObject duck;
 	void Start()
 	{
-		scoreLabel.text = "Score: " + GameManager.gameManager.scoreInt;
+		scoreLabel.text = GameManager.gameManager.GetScoreInt() + " s";
+
+		Material playerMaterial = GameManager.gameManager.GetMaterial();
+        Renderer[] childRenderers = duck.GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in childRenderers) {
+            if (r.gameObject.tag == "ColouredPart") {
+                r.material = playerMaterial;
+            }
+        }
 	}
     public void PlayButton()
     {

@@ -51,8 +51,6 @@ public class OtherDucks : MonoBehaviour
         // When they get high enough, just kill them.
         if (transform.position.y > 400) {
             Destroy(gameObject);
-
-            // @TODO: Player outlived a rival duck, increase score?
         }
     }
 
