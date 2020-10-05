@@ -11,6 +11,7 @@ public class GameMenuButtons : MonoBehaviour
     void Start()
     {
         MainMenuButton();
+        GameManager.gameManager.PlayMenuMusic();
     }
 
     public void MainMenuButton()

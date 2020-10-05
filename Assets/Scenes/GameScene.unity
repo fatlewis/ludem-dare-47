@@ -1975,6 +1975,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5979862930027205962, guid: 301fe44eb11e0cd4298bfdffbc314fc0, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -5979862930027205962, guid: 301fe44eb11e0cd4298bfdffbc314fc0, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 180607091950030758, guid: 301fe44eb11e0cd4298bfdffbc314fc0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 289.97165
@@ -2023,6 +2031,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3938104483541112152, guid: 301fe44eb11e0cd4298bfdffbc314fc0, type: 3}
+      propertyPath: menuMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: f4c141568c4ff8746906f39517754db7, type: 3}
+    - target: {fileID: 3938104483541112152, guid: 301fe44eb11e0cd4298bfdffbc314fc0, type: 3}
+      propertyPath: gameMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: a44635ed87d9256bd9ada78c53d50202, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 301fe44eb11e0cd4298bfdffbc314fc0, type: 3}
 --- !u!1001 &1162009944

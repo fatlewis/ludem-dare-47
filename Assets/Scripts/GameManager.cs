@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
 	public float score = 0;
 	public int scoreInt = 0;
 
+    public AudioClip menuMusic;
+    public AudioClip gameMusic;
+    AudioSource music;
+
 	Material playerMaterial; 
 
     // Awake is called when the script is being loaded
@@ -32,9 +36,11 @@ public class GameManager : MonoBehaviour
         //don't destroy this object when changing scenes
         DontDestroyOnLoad(gameObject);
     }
+    
     // Start is called before the first frame update
     void Start()
     {
+        music = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -65,5 +71,24 @@ public class GameManager : MonoBehaviour
     public Material GetMaterial()
     {
     	return playerMaterial;
+    }
+
+    public void PlayMenuMusic()
+    {
+        StopMusic();
+        music.clip = menuMusic;
+        music.Play();
+    }
+
+    public void PlayGameMusic()
+    {
+        StopMusic();
+        music.clip = gameMusic;
+        music.Play();
+    }
+
+    public void StopMusic()
+    {
+        music.Stop();
     }
 }

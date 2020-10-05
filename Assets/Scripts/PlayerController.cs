@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
 
         //get player size
         size = col.bounds.size;
+
+        GameManager.gameManager.PlayGameMusic();
     }
 
     // Update is called once per frame
