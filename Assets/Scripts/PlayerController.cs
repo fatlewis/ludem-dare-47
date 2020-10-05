@@ -70,10 +70,9 @@ public class PlayerController : MonoBehaviour
 
     void HookedHandler()
     {
-        //transform.position += new Vector3(0, 0.8f, 0);
         transform.position = hookLocation.position + hookOffset;
 
-        if (transform.position.y > 100) {
+        if (transform.position.y > 140) {
             Destroy(gameObject);
             UnityEngine.SceneManagement.SceneManager.LoadScene("EndScene");
         }
