@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
     Vector3 size;
 
     bool hooked = false;
+    Transform hookLocation;
+
+    // This is the required offset from the hook's transform to the duck's transform to make the hook line up with the loop
+    Vector3 hookOffset = new Vector3(11, 13, 0);
 
     // Start is called before the first frame update
     void Start()
@@ -66,18 +70,24 @@ public class PlayerController : MonoBehaviour
 
     void HookedHandler()
     {
-        transform.position += new Vector3(0, 0.8f, 0);
+        transform.position = hookLocation.position + hookOffset;
 
-        if (transform.position.y > 100) {
+        if (transform.position.y > 140) {
             Destroy(gameObject);
             UnityEngine.SceneManagement.SceneManager.LoadScene("EndScene");
         }
     }
 
-    void HandleHookCollision()
+    void HandleHookCollision(GameObject hook)
     {
         hooked = true;
         rb.useGravity = false;
+
+        hookLocation = hook.transform;
+
+        // Rotate the ducks so the hook is on the right place
+        // TODO: Make it look nice whatever their rotation
+        transform.rotation = new Quaternion(0, 180, 0, 0);
     }
 
     void Quack()
@@ -85,11 +95,11 @@ public class PlayerController : MonoBehaviour
         print("Quack");
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider collider)
     {
-        switch(other.tag) {
+        switch(collider.tag) {
             case "Hook":
-                HandleHookCollision();
+                HandleHookCollision(collider.gameObject);
                 break;
             default:
                 Quack();
