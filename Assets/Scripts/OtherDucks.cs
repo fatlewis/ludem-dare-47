@@ -10,8 +10,12 @@ public class OtherDucks : MonoBehaviour
     float radius;
     bool hooked = false;
 
+    private AudioSource[] quacks;
+
     void Start()
     {
+        quacks = GetComponents<AudioSource>();
+
         radius = (float)Math.Sqrt(Math.Pow(transform.position.x, 2) + Math.Pow(transform.position.z, 2));
         angle = (float)Math.Atan2(transform.position.z, transform.position.x);
         var rand = new System.Random((int)(angle + DateTime.Now.Millisecond));
@@ -59,12 +63,13 @@ public class OtherDucks : MonoBehaviour
 
     void Quack()
     {
-        print("Quack");
+        System.Random rand = new System.Random();
+        quacks[rand.Next(quacks.Length)].Play();
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        switch(other.tag) {
+        switch(collision.gameObject.tag) {
             case "Hook":
                 HandleHookCollision();
                 break;

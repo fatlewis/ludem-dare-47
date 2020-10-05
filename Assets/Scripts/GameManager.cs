@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
 	//static instance of the GM can be accessed from anywhere
 	public static GameManager gameManager;   
 
+    public AudioClip menuMusic;
+    public AudioClip gameMusic;
+    AudioSource music;
+
 	Material playerMaterial; 
 
     // Awake is called when the script is being loaded
@@ -32,9 +36,11 @@ public class GameManager : MonoBehaviour
         //find an object of type HudManager
         //hudManager = FindObjectOfType<HUDManager>();
     }
+    
     // Start is called before the first frame update
     void Start()
     {
+        music = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -51,5 +57,24 @@ public class GameManager : MonoBehaviour
     public Material GetMaterial()
     {
     	return playerMaterial;
+    }
+
+    public void PlayMenuMusic()
+    {
+        StopMusic();
+        music.clip = menuMusic;
+        music.Play();
+    }
+
+    public void PlayGameMusic()
+    {
+        StopMusic();
+        music.clip = gameMusic;
+        music.Play();
+    }
+
+    public void StopMusic()
+    {
+        music.Stop();
     }
 }
