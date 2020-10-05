@@ -1548,7 +1548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableMaterials:
-  - {fileID: 2100000, guid: 6c884ccd5ec4f4ebda6c3b17b9df63ab, type: 2}
+  - {fileID: 2100000, guid: 382354fc1c3eefd4cb8174096226b868, type: 2}
   - {fileID: 2100000, guid: da28bb460e8c7d648bd2a524b5eb908e, type: 2}
   - {fileID: 2100000, guid: 21dcf8e662266bd449eb16f9653a1145, type: 2}
   - {fileID: 2100000, guid: dd0d04dac281945c6a5a206bb84611b5, type: 2}
@@ -1569,7 +1569,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d691892252b874334a9922a5c54296ca, type: 2}
   - {fileID: 2100000, guid: f17df4c86519e4404b18c8c7188c1fc2, type: 2}
   - {fileID: 2100000, guid: d0faf4bf129aa404494289486fb018ee, type: 2}
-  - {fileID: 2100000, guid: 382354fc1c3eefd4cb8174096226b868, type: 2}
+  - {fileID: 2100000, guid: 6c884ccd5ec4f4ebda6c3b17b9df63ab, type: 2}
   - {fileID: 2100000, guid: 5f4516fcf60f347eaa447f40b4dda57b, type: 2}
   currentChosenMaterial: {fileID: 2100000, guid: 382354fc1c3eefd4cb8174096226b868, type: 2}
 --- !u!1 &2073140518
